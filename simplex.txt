@@ -85,7 +85,8 @@ float returnPerlin(vec3 uvw, float t)
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
-	vec2 uv = fragCoord.xy / iResolution.xy;
+    // if we devide the denominator with a number between 0.3 to 10, we change the spatial frequency
+    vec2 uv = fragCoord.xy / iResolution.xy 
     vec3 v_texCoord3D = vec3(uv,0.5);
     vec3 uvw = v_texCoord3D + 0.1*vec3(snoise(v_texCoord3D + vec3(0.0, 0.0, iTime)),
     snoise(v_texCoord3D + vec3(43.0, 17.0, iTime)),
